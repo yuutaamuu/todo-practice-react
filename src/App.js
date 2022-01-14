@@ -4,12 +4,22 @@ import { TodoList } from "./components/TodoList";
 import { CompleteList } from "./components/CompleteList";
 
 export const App = () => {
+  //data類
   const [inputItem, setInputItem] = useState("");
   const [todos, setTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
+  const [isShow, setIsShow] = useState(true);
 
+  //関数
   const onChangeInput = (e) => {
-    return setInputItem(e.target.value);
+    setInputItem(e.target.value);
+    console.log(e.target.value);
+
+    if (e.target.value) {
+      setIsShow(false);
+    } else if (!e.target.value) {
+      setIsShow(true);
+    }
   };
   const onClickAdd = () => {
     if (inputItem === "") return;
@@ -43,6 +53,7 @@ export const App = () => {
         inputItem={inputItem}
         onClickAdd={onClickAdd}
         onChangeInput={onChangeInput}
+        isShow={isShow}
       />
       <TodoList
         todos={todos}
