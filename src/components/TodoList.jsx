@@ -9,7 +9,7 @@ const style = {
 };
 
 export const TodoList = (props) => {
-  const { todos, onClickDelete } = props;
+  const { todos, onClickDelete, onClickComplete } = props;
   return (
     <div style={style}>
       <p>Todoリスト</p>
@@ -18,7 +18,8 @@ export const TodoList = (props) => {
           return (
             <li key={todo}>
               {todo}
-              <button onClick={() => onClickDelete(index)}>完了</button>
+              <button onClick={() => onClickComplete(index)}>完了</button>
+              <button onClick={() => onClickDelete(index)}>削除</button>
             </li>
           );
         })}
